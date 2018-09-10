@@ -1,0 +1,28 @@
+﻿  main.cpp
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(14): error C2061: 구문 오류: 식별자 'Attack'
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(34): error C2061: 구문 오류: 식별자 'Attack'
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(16): error C2065: 'attacker': 선언되지 않은 식별자입니다.
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(16): error C2227: '->damage' 왼쪽은 클래스/구조체/공용 구조체/제네릭 형식을 가리켜야 합니다.
+  c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(16): note: 'unknown-type' 형식입니다.
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(18): error C2065: 'attacker': 선언되지 않은 식별자입니다.
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(18): error C2227: '->damage' 왼쪽은 클래스/구조체/공용 구조체/제네릭 형식을 가리켜야 합니다.
+  c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(18): note: 'unknown-type' 형식입니다.
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(20): error C2065: 'attacker': 선언되지 않은 식별자입니다.
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(20): error C2227: '->attack_eff' 왼쪽은 클래스/구조체/공용 구조체/제네릭 형식을 가리켜야 합니다.
+  c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(20): note: 'unknown-type' 형식입니다.
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(21): error C2065: 'attacker': 선언되지 않은 식별자입니다.
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(25): error C2065: 'attacker': 선언되지 않은 식별자입니다.
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(25): error C2227: '->damage' 왼쪽은 클래스/구조체/공용 구조체/제네릭 형식을 가리켜야 합니다.
+  c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(25): note: 'unknown-type' 형식입니다.
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(27): error C2065: 'attacker': 선언되지 않은 식별자입니다.
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(27): error C2227: '->attack_eff' 왼쪽은 클래스/구조체/공용 구조체/제네릭 형식을 가리켜야 합니다.
+  c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(27): note: 'unknown-type' 형식입니다.
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\main.cpp(6): error C2259: 'Player': 추상 클래스를 인스턴스화할 수 없습니다.
+  c:\users\210-11\desktop\game_ai\02_strategy_pattern\main.cpp(6): note: 다음 멤버가 원인입니다.
+  c:\users\210-11\desktop\game_ai\02_strategy_pattern\main.cpp(6): note: 'void Body::rend_effect(void) const': abstract입니다.
+  c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(34): note: 'Body::rend_effect' 선언을 참조하십시오.
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\main.cpp(7): error C2259: 'Player': 추상 클래스를 인스턴스화할 수 없습니다.
+  c:\users\210-11\desktop\game_ai\02_strategy_pattern\main.cpp(7): note: 다음 멤버가 원인입니다.
+  c:\users\210-11\desktop\game_ai\02_strategy_pattern\main.cpp(7): note: 'void Body::rend_effect(void) const': abstract입니다.
+  c:\users\210-11\desktop\game_ai\02_strategy_pattern\body.h(34): note: 'Body::rend_effect' 선언을 참조하십시오.
+c:\users\210-11\desktop\game_ai\02_strategy_pattern\main.cpp(8): error C2660: 'Body::damaged': 함수는 1개의 매개 변수를 사용하지 않습니다.
