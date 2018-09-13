@@ -1,0 +1,21 @@
+version: 0.1 ({build})
+skip_branch_with_pr: true
+os:
+- Visual Studio 2017
+platform:
+- x64
+configuration:
+- Release
+clone_folder: D:\codes\appveyor\Game_AI
+install:
+- ps: $env:CMAKE_GENERATOR = "Visual Studio 15 2017 Win64"
+before_build:
+- md D:\codes\appveyor\Game_AI\build
+- cd D:\codes\appveyor\Game_AI\build
+- cmake .. -G "%CMAKE_GENERATOR%"
+build:
+project: D:\codes\appveyor\Game_AI\build\Game_AI.sln
+parallel: true
+verbosity: normal
+after_build:
+- D:\codes\appveyor\Game_AI\build\bin\Release\Game_AI.exe
