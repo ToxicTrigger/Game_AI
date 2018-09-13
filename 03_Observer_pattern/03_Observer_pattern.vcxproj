@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DiscomfortPer.h" />
     <ClInclude Include="ElementRenderer.h" />
     <ClInclude Include="MyObserver.h" />
     <ClInclude Include="Observer.h" />
@@ -122,6 +123,7 @@
     <ClInclude Include="WeatherData.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DiscomfortPer.cpp" />
     <ClCompile Include="ElementRenderer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyObserver.cpp" />
