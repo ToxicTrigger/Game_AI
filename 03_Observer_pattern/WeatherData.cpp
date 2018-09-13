@@ -15,7 +15,7 @@ void WeatherData::register_observer(Observer* target)
 void WeatherData::notify_observers()
 {
 	std::list<Observer*>::iterator iter;
-	for (iter = this->observers.begin(); iter != this->observers.end(); iter++)
+	for (iter = this->observers.begin(); iter != this->observers.end(); ++iter)
 	{
 		printf("Observer [%p] :", iter._Ptr);
 		iter._Ptr->_Myval->update(this->temp, this->hum, this->press);
