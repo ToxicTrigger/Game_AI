@@ -1,25 +1,59 @@
 #pragma once
-#include "Attack.h"
-#include "Body.h"
+#include "Weapon.h"
+#include "Hand.h"
+#include <iostream>
 
-class Player : public Body, Attack
+using namespace std;
+
+class Player
 {
 public:
-	Player(char* name, float Hp, float Power) : Body(name, Hp), Attack(Power)
-	{}
+	float Hp;
+	Hand* hand;
+	char* name;
 
-	Attack* get_attack()
+	Player()
 	{
-		return this;
+		hand = new Hand();
+		Hp = 0;
+		name = " ";
 	}
 
-	virtual void rend_effect(Attack* attacker) const
+	Player(char* name, float hp, Weapon* weapon) : name(name), Hp(hp)
 	{
-		std::cout << "맞았다!" << std::endl;
+		hand = new Hand(weapon);
+	}
+	
+	void damaged(Player* player)
+	{
+		float dam = player->hand->get_weapon()->get_power();
+		Hp -= dam;
+
+		cout << this->name << " 가 " << player->name << " 의 "  
+		<< player->hand->get_weapon()->name << " 공격 때문에 " << dam << " 의 피해를 입었습니다!" << endl;
+
+		cout << this->name << " 남은 체력 : " << this->Hp << endl;
+		if (Hp <= 0)
+		{
+			cout << endl << this->name << " 은 사망했습니다."  << endl;
+		}
 	}
 
-	virtual void attack_eff()
+	void attack(Player* player)
 	{
-		std::cout << "강공격!" << std::endl;
+		if (this->hand->get_weapon() != nullptr & this->Hp > 0)
+		{
+			this->hand->get_weapon()->rend_effect();
+			player->damaged(this);
+		}
+		else if (this->Hp <= 0)
+		{
+			cout << this->name << " 의 영혼은 공격하려 했지만.. 몸이 말을 듣지 않았습니다." << endl;
+		}
+		else
+		{
+			cout << this->name << " 의 손에 무기가 없습니다." << endl;
+		}
 	}
+
 };
