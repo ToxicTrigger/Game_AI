@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "02_Strategy_pattern", "02_S
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "03_Observer_pattern", "03_Observer_pattern\03_Observer_pattern.vcxproj", "{20943DAB-0334-42D7-A855-063668537F67}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "04_Decorator", "04_Decorator\04_Decorator.vcxproj", "{A26D8D40-951D-4240-9617-BAADC305D2E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{20943DAB-0334-42D7-A855-063668537F67}.Release|x64.Build.0 = Release|x64
 		{20943DAB-0334-42D7-A855-063668537F67}.Release|x86.ActiveCfg = Release|Win32
 		{20943DAB-0334-42D7-A855-063668537F67}.Release|x86.Build.0 = Release|Win32
+		{A26D8D40-951D-4240-9617-BAADC305D2E1}.Debug|x64.ActiveCfg = Debug|x64
+		{A26D8D40-951D-4240-9617-BAADC305D2E1}.Debug|x64.Build.0 = Debug|x64
+		{A26D8D40-951D-4240-9617-BAADC305D2E1}.Debug|x86.ActiveCfg = Debug|Win32
+		{A26D8D40-951D-4240-9617-BAADC305D2E1}.Debug|x86.Build.0 = Debug|Win32
+		{A26D8D40-951D-4240-9617-BAADC305D2E1}.Release|x64.ActiveCfg = Release|x64
+		{A26D8D40-951D-4240-9617-BAADC305D2E1}.Release|x64.Build.0 = Release|x64
+		{A26D8D40-951D-4240-9617-BAADC305D2E1}.Release|x86.ActiveCfg = Release|Win32
+		{A26D8D40-951D-4240-9617-BAADC305D2E1}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
