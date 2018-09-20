@@ -10,16 +10,11 @@ class Pizza
 {
 protected:
 	string name;
-
 	string dough;
-
 	string sauce;
-
 	list<string> topping;
 
 public:
-
-	Pizza( void ) { }
 	Pizza( Pizza* pizza )
 	{
 		this->name = pizza->name;

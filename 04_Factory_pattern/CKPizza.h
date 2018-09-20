@@ -5,11 +5,8 @@ class CKPizza : public Pizza
 {
 public:
 
-	CKPizza()
+	CKPizza() : Pizza( "청강의 명물 피자" , "야들야들한 도우" , "새콤 달콤 짭짤 단짠단짠의 정석" , list<string>())
 	{
-		this->name = "청강의 명물 피자";
-		this->dough = "야들야들한 도우";
-		this->sauce = "새콤 달콤 짭짤 단짠단짠의 정석";
 		this->topping.push_back( "쫄깃 버섯" );
 		this->topping.push_back( "매콤 햄" );
 		this->topping.push_back( "먹고싶다" );

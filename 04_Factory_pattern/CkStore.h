@@ -4,10 +4,9 @@
 
 class Ckstore : public PizzaStore
 {
-public :
+public:
 	Pizza * creat_pizza( Pizza * type )
 	{
-
 		return type;
 	}
 };
