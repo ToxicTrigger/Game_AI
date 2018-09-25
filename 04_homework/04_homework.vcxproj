@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DecoratorJewelry.h" />
+    <ClInclude Include="EastFactory.h" />
     <ClInclude Include="Jeweler.h" />
     <ClInclude Include="JewelryFactory.h" />
     <ClInclude Include="LuckJewelry.h" />
@@ -27,6 +28,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

@@ -4,10 +4,10 @@
 class Jeweler : public DecoratorJewelry
 {
 protected:
-	DecoratorJewelry *jew;
+	DecoratorJewelry * jew;
 public:
 	inline Jeweler() : DecoratorJewelry() {};
-	inline Jeweler(string name, string skill) : DecoratorJewelry(name, skill) {}
+	inline Jeweler(string name , string skill) : DecoratorJewelry(name , skill) {}
 
 	inline Jeweler(DecoratorJewelry *jewelry) : DecoratorJewelry(jewelry)
 	{

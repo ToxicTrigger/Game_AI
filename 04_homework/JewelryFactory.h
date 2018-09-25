@@ -6,11 +6,11 @@
 class JewelryFactory
 {
 protected:
-	virtual DecoratorJewelry *mining(DecoratorJewelry *type)
+	inline virtual DecoratorJewelry *mining(DecoratorJewelry *type)
 	{
-		std::cout << 
+		std::cout <<
 			"===================" << std::endl <<
-			"기본 공장에서 생산됨 : " << type->get_origin_name() << std::endl << 
+			"기본 공장에서 생산됨 : " << type->get_origin_name() << std::endl <<
 			"===================" << std::endl;
 		return type;
 	}

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DecoratorJewelry">
+    <Position X="1" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAMAEAAAIAAAQAAEAAAAAAAAAIAAAAE=</HashCode>
+      <FileName>DecoratorJewelry.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JewelryFactory">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>JewelryFactory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PowerJewelry">
+    <Position X="4.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>PowerJewelry.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Jeweler">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Jeweler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LuckJewelry">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <InheritanceLine Type="Jeweler">
+      <InheritanceModifierLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.018" />
+      </InheritanceModifierLabel>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>LuckJewelry.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

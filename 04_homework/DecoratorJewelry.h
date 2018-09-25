@@ -17,7 +17,7 @@ public:
 		skill_name = "Unknown Skill";
 	};
 
-	inline explicit DecoratorJewelry(string name, string skill_name) : DecoratorJewelry()
+	inline explicit DecoratorJewelry(string name , string skill_name) : DecoratorJewelry()
 	{
 		this->name = name;
 		this->skill_name = skill_name;
@@ -38,7 +38,7 @@ public:
 	{
 		return skill_name;
 	}
-	
+
 	//예외가 날 상황이 없으므로 noexcept
 	inline virtual auto get_name() const noexcept -> string { return this->name; }
 	inline virtual auto get_skill() const noexcept -> string { return this->skill_name; }
