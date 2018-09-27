@@ -6,15 +6,14 @@
 class JewelryFactory
 {
 protected:
-	inline virtual DecoratorJewelry *mining(DecoratorJewelry *type)
+	virtual DecoratorJewelry *mining(DecoratorJewelry *type)
 	{
-		std::cout <<
+		std::cout << 
 			"===================" << std::endl <<
-			"기본 공장에서 생산됨 : " << type->get_origin_name() << std::endl <<
+			"기본 공장에서 생산됨 : " << type->get_origin_name() << std::endl << 
 			"===================" << std::endl;
 		return type;
 	}
-
 public:
 	inline auto creat(DecoratorJewelry *type) noexcept -> DecoratorJewelry*
 	{
