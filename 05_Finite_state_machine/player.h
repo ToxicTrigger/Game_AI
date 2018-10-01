@@ -1,13 +1,14 @@
 #pragma once
-#include "quval_object.h"
+#include "component.h"
 #include <iostream>
 
 class player : public component
 {
 public:
-
-	void update()
+	float time;
+	void update(float delta) noexcept
 	{
-		std::cout << "dd" << std::endl;
+		std::cout << "Player : " << time << std::endl;
+		time += delta;
 	}
 };

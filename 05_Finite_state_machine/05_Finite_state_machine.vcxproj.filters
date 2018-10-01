@@ -27,9 +27,6 @@
     <ClInclude Include="component.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="quval_object.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="component_world.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>

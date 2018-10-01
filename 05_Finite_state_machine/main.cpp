@@ -7,10 +7,11 @@ using namespace std;
 
 auto main() -> int
 {
-	//Traffic::Light light;
-	component_world world;
-	world.add(make_unique<player>());
-	world.add(make_unique<pac>());
-	getchar();
+	component_world *world = new component_world();
+
+	player *p = new player();
+	world->add(p);
+	world->add(new pac());
+
 	return 0;
 }

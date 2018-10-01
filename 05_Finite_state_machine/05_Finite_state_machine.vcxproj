@@ -120,7 +120,6 @@
     <ClInclude Include="fsm.h" />
     <ClInclude Include="pac.h" />
     <ClInclude Include="player.h" />
-    <ClInclude Include="quval_object.h" />
     <ClInclude Include="TrafficLight.h" />
   </ItemGroup>
   <ItemGroup>

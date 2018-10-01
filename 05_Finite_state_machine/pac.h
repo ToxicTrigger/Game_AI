@@ -5,8 +5,8 @@
 class pac : public component
 {
 public:
-	void update()
+	void update(float delta) noexcept
 	{
-		std::cout << "Dd" << std::endl;
+		std::cout << "Pacman = " << delta << std::endl;
 	}
 };
