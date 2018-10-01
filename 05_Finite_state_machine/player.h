@@ -1,21 +1,13 @@
 #pragma once
-#include "fsm.h"
+#include "quval_object.h"
 #include <iostream>
 
-class player : public fsm
+class player : public component
 {
 public:
-	player() : fsm()
-	{
 
-	}
-	
-	void awake() override
+	void update()
 	{
-		std::cout << "초기화 끝" << std::endl;
-	}
-	void update() override
-	{
-		std::cout << "안녕";
+		std::cout << "dd" << std::endl;
 	}
 };
