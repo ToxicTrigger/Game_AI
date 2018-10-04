@@ -1,4 +1,4 @@
-#include "TrafficLight.h"
+#include "Miner.h"
 #include "component_world.h"
 #include "fsm.h"
 
@@ -6,14 +6,10 @@ using namespace std;
 
 auto main() -> int
 {
-	Traffic::light *light1 = new Traffic::light();
-	Traffic::light *light2 = new Traffic::light();
+	Miner *miner = new Miner();
 	component_world *world = new component_world();
+	world->add(miner);
 
-	world->add(light1);
-	world->add(light2);
-
-	auto tmp = world->get_components<Traffic::light>();
 	getchar();
 	
 	return 0;

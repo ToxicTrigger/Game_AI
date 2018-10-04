@@ -8,11 +8,22 @@
 
 namespace fsm 
 {
-	struct state
+	class state
 	{
+	public:
 		std::string name;
 		state *next, *cur;
 		bool def, op;
+
+		state()
+		{
+			def = true;
+		}
+
+		state(std::string name) : state()
+		{
+			this->name = name;
+		}
 	};
 
 	class map : public component
@@ -24,7 +35,8 @@ namespace fsm
 		map()
 		{
 			states = std::vector<state*>();
-			state *idle = new state{"idle", nullptr, nullptr, true, true};
+			state *idle = new state("idle");
+			
 			idle->cur = idle;
 			add_state(idle);
 			now_state = idle;
@@ -32,6 +44,12 @@ namespace fsm
 
 		map(state *def_state) : map()
 		{
+			// inited state idle
+			now_state->op = true;
+
+			now_state->next = def_state;
+			now_state->cur = now_state;
+			def_state->cur = now_state;
 			now_state = def_state;
 		}
 
@@ -70,7 +88,6 @@ namespace fsm
 			{
 				return false;
 			}
-			
 			a->next = b;
 			b->cur = a;
 			return true;
@@ -109,7 +126,7 @@ namespace fsm
 
 		void update(float delta) noexcept
 		{
-			
+
 			simulate();
 			std::cout << "now_state : " << now_state->name << std::endl;
 		}

@@ -118,6 +118,7 @@
     <ClInclude Include="component.h" />
     <ClInclude Include="component_world.h" />
     <ClInclude Include="fsm.h" />
+    <ClInclude Include="Miner.h" />
     <ClInclude Include="TrafficLight.h" />
   </ItemGroup>
   <ItemGroup>
