@@ -22,13 +22,13 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{D7A3E39E-A09E-4288-94D0-BF81345B05C7}</ProjectGuid>
     <RootNamespace>My05Finitestatemachine</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -118,8 +118,6 @@
     <ClInclude Include="component.h" />
     <ClInclude Include="component_world.h" />
     <ClInclude Include="fsm.h" />
-    <ClInclude Include="pac.h" />
-    <ClInclude Include="player.h" />
     <ClInclude Include="TrafficLight.h" />
   </ItemGroup>
   <ItemGroup>

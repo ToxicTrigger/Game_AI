@@ -2,8 +2,12 @@
 #include <list>
 #include <memory>
 #include <chrono>
-#include <stdlib.h>
 #include <thread>
+
+#if _WIN32
+#include <stdlib.h>
+#endif
+
 
 #include "component.h"
 
@@ -49,9 +53,30 @@ public:
 		return nullptr;
 	};
 
-	component& get(int index) 
+
+	template<typename T>
+	list<T*> get_components()
+	{
+		list<T*> tmp = list<T*>();
+		for (auto i : components)
+		{
+			auto t = dynamic_cast<T*>(i);
+			if (t != nullptr)
+			{
+				tmp.push_back(t);
+			}
+		}
+		return tmp;
+	};
+
+	component* get(unsigned int index)
 	{
 		//TODO:: 인덱스 넘버로 가져오기!
+		if (index >= components.size()) return nullptr;
+
+		auto i = components.begin();
+		std::advance(i, index);
+		return *i;
 	}
 
 	//add component in world-component-list
@@ -75,7 +100,10 @@ public:
 					i->update(this->delta_time.count());
 				}
 			}
+
+#if _WIN32
 			system("cls");
+#endif
 
 			delta_time = chrono::duration_cast<chrono::duration<float>>(time::now() - t);
 		}

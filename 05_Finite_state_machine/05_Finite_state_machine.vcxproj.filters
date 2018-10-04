@@ -18,9 +18,6 @@
     <ClInclude Include="fsm.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="player.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="TrafficLight.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -28,9 +25,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="component_world.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="pac.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

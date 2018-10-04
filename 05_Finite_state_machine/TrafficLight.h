@@ -1,74 +1,58 @@
 #pragma once
-#include <thread>
-#include <chrono>
 #include <iostream>
-#include <stdlib.h>
+#include "fsm.h"
 
 namespace Traffic
 {
-	using namespace std;
-
-	typedef chrono::high_resolution_clock time;
-
-	enum State
+	class light : public component
 	{
-		red,
-		yellow,
-		green,
-	};
+		fsm::map *map;
+		float start;
+		bool is_red, is_yellow, is_green;
 
-	class Light
-	{
 	public:
-		State state = green;
-
-		Light()
+		light()
 		{
-			//쓰레드에 람다 함수 먹이기
-			thread t = thread([=]()
+			map = new fsm::map();
+			map->add_state(new fsm::state{ "Red", nullptr, nullptr , false, false });
+			map->add_state(new fsm::state{ "Yellow", nullptr, nullptr , false, false });
+			map->add_state(new fsm::state{ "Green", nullptr, nullptr , false, false });
+			map->link_state("idle", "Red");
+			map->link_state("Red", "Yellow");
+			map->link_state("Green", "Red");
+			map->link_state("Yellow", "Green");
+		}
+
+		void update(float delta) noexcept
+		{
+			start += delta;
+			map->change_state("Green", true, is_green);
+			map->change_state("Red", true, is_red);
+			map->change_state("Yellow", true, is_yellow);
+
+			if (start >= 0 && start <= 3.0f)
 			{
-				auto start = time::now();
-				float t = 0;
-				while (true)
-				{
-					auto cur = time::now();
+				is_green = true;
+				is_red = false;
+				is_yellow = false;
+			}
+			else if (start >= 3.0f && start <= 5.0f)
+			{
+				is_red = true;
+				is_yellow = false;
+			}
+			else if (start >= 5.0f && start <= 8.0f)
+			{
+				is_yellow = true;
+				is_green = false;
+			}
+			else if (start >= 8.0f && start <= 11.0f)
+			{
+				start = 0;
+			}
 
-					auto Time = chrono::duration_cast<chrono::duration<int>>(cur - start);
-
-					auto float_time = chrono::duration_cast<chrono::duration<float>>(cur - start);
-
-					auto t1 = time::now();
-					auto t2 = time::now();
-
-					if (t >= 1.0f)
-					{
-						system("cls");
-						switch (state)
-						{
-							//한가지 상태에서 다른 상태로 한번씩 전이가 가능하도록.
-						case Traffic::red:
-							if (Time.count() % 5 == 0) state = Traffic::green;
-							cout << "지금 상태 : " << "R" << endl;
-							break;
-						case Traffic::green:
-							if (Time.count() % 5 == 0) state = Traffic::yellow;
-							cout << "지금 상태 : " << "G" << endl;
-							break;
-						case Traffic::yellow:
-							if (Time.count() % 2 == 0) state = Traffic::red;
-							cout << "지금 상태 : " << "Y" << endl;
-							break;
-						}
-						t = 0;
-
-					}
-					else
-					{
-						t += chrono::duration_cast<chrono::duration<float>>(t2 - t1).count() * 10;
-					}
-				};
-			});
-			t.join();
+			std::cout << "Play Time :" << start << std::endl;
+			map->update(delta);
 		}
 	};
 }
