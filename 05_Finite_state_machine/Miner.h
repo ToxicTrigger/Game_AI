@@ -12,20 +12,18 @@ class Miner : public component
 public:
 	Miner()
 	{
-		map = new fsm::map();
-		map->add_state(new fsm::state("GoHome"));
-		map->link_state("idle", "GoHome");
-		map->change_state("idle", true, true);
+		map = new fsm::map(new fsm::state("GoHome"));
+		//map->add_state(new fsm::state("GoHome"));
 		map->add_state(new fsm::state("EnterMineAndDig"));
 		map->add_state(new fsm::state("VisitBank"));
 		map->add_state(new fsm::state("QuenchThist"));
-
+		
 		map->link_state("GoHome", "EnterMineAndDig");
-		map->link_state("EnterMineAndDig", "QuenchThist");
 		map->link_state("EnterMineAndDig", "VisitBank");
-
-		map->link_state("QuenchThist", "EnterMineAndDig");
+		map->link_state("EnterMineAndDig", "QuenchThist");
 		map->link_state("VisitBank", "GoHome");
+		map->link_state("QuenchThist", "EnterMineAndDig");
+
 
 		money = 3;
 		time = 0;

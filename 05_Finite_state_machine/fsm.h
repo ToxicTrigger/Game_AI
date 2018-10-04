@@ -5,14 +5,18 @@
 #include "component.h"
 #include <iostream>
 
-
 namespace fsm 
 {
 	class state
 	{
 	public:
 		std::string name;
-		bool op;
+
+		state()
+		{
+			this->name = "Unknown";
+		}
+
 		state(std::string name)
 		{
 			this->name = name;
@@ -21,18 +25,16 @@ namespace fsm
 
 	class link
 	{
-
 	public:
-		static const unsigned int MAX_OPS = 12;
 		state *cur;
 		state *next;
-		bool* ops;
+		int ops;
 
 		link()
 		{
 			cur = nullptr;
 			next = nullptr;
-			ops = new bool[link::MAX_OPS];
+			ops = 1;
 		}
 
 		link(state *current, state *next) : link()
@@ -54,7 +56,6 @@ namespace fsm
 			states = std::vector<state*>();
 			links = std::vector<link*>();
 			state *idle = new state("idle");
-			idle->op = true;
 			add_state(idle);
 			now_state = idle;
 		}
@@ -63,9 +64,8 @@ namespace fsm
 		{
 			// inited state idle
 			link *def = new link(now_state, def_state);
-			def->ops[0] = true;
+			def->ops = 0;
 			links.push_back(def);
-			//now_state = def_state;
 		}
 
 		inline state* get_state(unsigned int index) const noexcept
@@ -123,34 +123,30 @@ namespace fsm
 			{
 				if (i->cur->name == now_state->name)
 				{
-					int size = sizeof(i->ops) / sizeof(bool);
-					bool all_pass = true;
-					for (int ii = 0; ii < size; ++ii)
+					if (i->ops == 0)
 					{
-						if (!i->ops[ii])
-						{
-							all_pass = false;
-						}
-					}
-					if (all_pass)
-					{
+						i->ops += 1;
 						now_state = i->next;
-						int size = sizeof(i->ops) / sizeof(bool);
-						for (int ii = 0; ii < size; ++ii)
-						{
-							i->ops[ii] = false;
-						}
+
+						return;
 					}
 				}
 			}
 		}
 
-		inline bool change_state(std::string name, unsigned int op_index ,bool op) const noexcept
+		inline bool change_link(std::string state1, std::string state2, unsigned int op) const noexcept
 		{
-			state *tmp = get_state(name);
-			if (tmp != nullptr)
+			state *tmp = get_state(state1);
+			state *tmp2 = get_state(state2);
+			if (tmp != nullptr && tmp2 != nullptr)
 			{
-				tmp->op = true;
+				for (auto i : links)
+				{
+					if (i->cur->name == tmp->name && i->next->name == tmp2->name)
+					{
+						i->ops = op;
+					}
+				}
 				return true;
 			}
 			return false;
