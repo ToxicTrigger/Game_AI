@@ -12,17 +12,33 @@ namespace fsm
 	{
 	public:
 		std::string name;
-		state *next, *cur;
-		bool def, op;
-
-		state()
-		{
-			def = true;
-		}
-
-		state(std::string name) : state()
+		bool op;
+		state(std::string name)
 		{
 			this->name = name;
+		}
+	};
+
+	class link
+	{
+
+	public:
+		static const unsigned int MAX_OPS = 12;
+		state *cur;
+		state *next;
+		bool* ops;
+
+		link()
+		{
+			cur = nullptr;
+			next = nullptr;
+			ops = new bool[link::MAX_OPS];
+		}
+
+		link(state *current, state *next) : link()
+		{
+			this->cur = current;
+			this->next = next;
 		}
 	};
 
@@ -30,14 +46,15 @@ namespace fsm
 	{
 	public:
 		std::vector<state*> states;
+		std::vector<link*> links;
 		state *now_state;
 		
 		map()
 		{
 			states = std::vector<state*>();
+			links = std::vector<link*>();
 			state *idle = new state("idle");
-			
-			idle->cur = idle;
+			idle->op = true;
 			add_state(idle);
 			now_state = idle;
 		}
@@ -45,12 +62,10 @@ namespace fsm
 		map(state *def_state) : map()
 		{
 			// inited state idle
-			now_state->op = true;
-
-			now_state->next = def_state;
-			now_state->cur = now_state;
-			def_state->cur = now_state;
-			now_state = def_state;
+			link *def = new link(now_state, def_state);
+			def->ops[0] = true;
+			links.push_back(def);
+			//now_state = def_state;
 		}
 
 		inline state* get_state(unsigned int index) const noexcept
@@ -80,7 +95,7 @@ namespace fsm
 			return nullptr;
 		}
 
-		inline bool link_state(std::string state1, std::string state2) const noexcept
+		inline bool link_state(std::string state1, std::string state2) noexcept
 		{
 			state *a = get_state(state1);
 			state *b = get_state(state2);
@@ -88,8 +103,9 @@ namespace fsm
 			{
 				return false;
 			}
-			a->next = b;
-			b->cur = a;
+			link *tmp = new link(a, b);
+			this->links.push_back(tmp);
+
 			return true;
 		}
 
@@ -103,22 +119,38 @@ namespace fsm
 
 		inline void simulate() noexcept
 		{
-			if (now_state->def && now_state->op)
+			for (auto i : this->links)
 			{
-				if (now_state->next != nullptr)
+				if (i->cur->name == now_state->name)
 				{
-					now_state = now_state->next;
+					int size = sizeof(i->ops) / sizeof(bool);
+					bool all_pass = true;
+					for (int ii = 0; ii < size; ++ii)
+					{
+						if (!i->ops[ii])
+						{
+							all_pass = false;
+						}
+					}
+					if (all_pass)
+					{
+						now_state = i->next;
+						int size = sizeof(i->ops) / sizeof(bool);
+						for (int ii = 0; ii < size; ++ii)
+						{
+							i->ops[ii] = false;
+						}
+					}
 				}
 			}
 		}
 
-		inline bool change_state(std::string name, bool def, bool op) const noexcept
+		inline bool change_state(std::string name, unsigned int op_index ,bool op) const noexcept
 		{
 			state *tmp = get_state(name);
 			if (tmp != nullptr)
 			{
-				tmp->def = def;
-				tmp->op = op;
+				tmp->op = true;
 				return true;
 			}
 			return false;
@@ -126,7 +158,6 @@ namespace fsm
 
 		void update(float delta) noexcept
 		{
-
 			simulate();
 			std::cout << "now_state : " << now_state->name << std::endl;
 		}
@@ -139,6 +170,7 @@ namespace fsm
 			}
 
 			states.clear();
+			links.clear();
 		}
 
 	};

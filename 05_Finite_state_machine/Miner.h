@@ -12,7 +12,6 @@ class Miner : public component
 public:
 	Miner()
 	{
-
 		map = new fsm::map();
 		map->add_state(new fsm::state("GoHome"));
 		map->link_state("idle", "GoHome");
