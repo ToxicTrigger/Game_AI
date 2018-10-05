@@ -42,6 +42,7 @@ namespace fsm
 			this->cur = current;
 			this->next = next;
 		}
+
 	};
 
 	class map : public component
@@ -63,6 +64,7 @@ namespace fsm
 		map(state *def_state) : map()
 		{
 			// inited state idle
+			add_state(def_state);
 			link *def = new link(now_state, def_state);
 			def->ops = 0;
 			links.push_back(def);
@@ -99,7 +101,7 @@ namespace fsm
 		{
 			state *a = get_state(state1);
 			state *b = get_state(state2);
-			if (a == nullptr && b == nullptr)
+			if (a == nullptr || b == nullptr)
 			{
 				return false;
 			}
@@ -123,6 +125,7 @@ namespace fsm
 			{
 				if (i->cur->name == now_state->name)
 				{
+					// ops == 0 , move now_state between link
 					if (i->ops == 0)
 					{
 						i->ops += 1;

@@ -13,7 +13,6 @@ public:
 	Miner()
 	{
 		map = new fsm::map(new fsm::state("GoHome"));
-		//map->add_state(new fsm::state("GoHome"));
 		map->add_state(new fsm::state("EnterMineAndDig"));
 		map->add_state(new fsm::state("VisitBank"));
 		map->add_state(new fsm::state("QuenchThist"));
@@ -40,7 +39,7 @@ public:
 			}
 			else
 			{
-				map->now_state = map->get_state("EnterMineAndDig");
+				map->change_link("GoHome", "EnterMineAndDig", 0);
 			}
 		}
 
@@ -50,7 +49,7 @@ public:
 
 			if (money >= 5)
 			{
-				map->now_state = map->get_state("VisitBank");
+				map->change_link("EnterMineAndDig", "VisitBank", 0);
 			}
 
 			if (thirst <= 3)
@@ -59,7 +58,7 @@ public:
 			}
 			else 
 			{
-				map->now_state = map->get_state("QuenchThist");
+				map->change_link("EnterMineAndDig", "QuenchThist", 0);
 			}
 		}
 
@@ -71,7 +70,7 @@ public:
 			}
 			else
 			{
-				map->now_state = map->get_state("EnterMineAndDig");
+				map->change_link("QuenchThist", "EnterMineAndDig", 0);
 			}
 		}
 
@@ -86,7 +85,7 @@ public:
 			else
 			{
 				money = 0;
-				map->now_state = map->get_state("GoHome");
+				map->change_link("VisitBank", "GoHome", 0);
 			}
 		}
 
