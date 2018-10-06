@@ -100,11 +100,6 @@ public:
 					i->update(this->delta_time.count());
 				}
 			}
-
-#if _WIN32
-			system("cls");
-#endif
-
 			delta_time = chrono::duration_cast<chrono::duration<float>>(time::now() - t);
 		}
 	}
