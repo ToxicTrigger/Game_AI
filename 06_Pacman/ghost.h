@@ -30,7 +30,7 @@ namespace ghost
 
 		void draw()
 		{
-			if (target->state != 1)
+			if (target->states->get_now_state()->name != "Power Up")
 			{
 				state->change_link("Run", "Follow", 0);
 				SetColor(13);
@@ -51,7 +51,7 @@ namespace ghost
 
 			if (target->x == x && target->y == y)
 			{
-				if (target->state == 0)
+				if (target->states->get_now_state()->name == "Normal")
 				{
 					target->active = false;
 				}
@@ -109,15 +109,11 @@ namespace ghost
 			if (tick >= 0.5f)
 			{
 				auto path = std::vector<wall>();
-				
-				//path.push_back(map[y-1][x-1].w);
+				//현재 위치 기준으로 상하좌우 타일 가져오기
 				path.push_back(map[y - 1][x]);
-				//path.push_back(map[y - 1][x+1].w);
 				path.push_back(map[y][x-1]);
 				path.push_back(map[y][x+1]);
-				//path.push_back(map[y + 1][x-1].w);
 				path.push_back(map[y + 1][x]);
-				//path.push_back(map[y + 1][x+1].w);
 
 				auto poss = std::vector<wall>();
 				for (auto i = 0; i < 4; ++i)
@@ -129,7 +125,7 @@ namespace ghost
 					}
 				}
 
-				if (state->now_state->name == "Follow")
+				if (state->get_now_state()->name == "Follow")
 				{
 					wall min;
 					min.power = 99999;
@@ -144,7 +140,7 @@ namespace ghost
 					this->y = min.y;
 					move_count += 1;
 				}
-				else if (state->now_state->name == "Run")
+				else if (state->get_now_state()->name == "Run")
 				{
 					wall max;
 					for (auto i : poss)

@@ -12,7 +12,7 @@ public:
 
 	int input;
 	int input_x, input_y;
-	int state;
+	fsm::map *states;
 
 	wall **map;
 
@@ -26,6 +26,11 @@ public:
 		y = 12;
 		this->map = map;
 		key = std::thread(&pacman::update_input, this);
+		states = new fsm::map(new fsm::state("Normal"));
+		states->add_state("Power Up");
+		states->link_state("Normal", "Power Up");
+		states->link_state("Power Up", "Normal");
+
 	}
 
 	void update_input()
@@ -41,7 +46,7 @@ public:
 
 			if (map[y][x].w == (char*)"¡Ü")
 			{
-				state = 1;
+				states->change_link("Normal", "Power Up", 0);
 				map[y][x].w = (char*)"  ";
 			}
 
@@ -71,7 +76,7 @@ public:
 
 	void draw_pacman(float delta)
 	{
-		if (state == 0)
+		if (states->get_now_state()->name == "Normal")
 		{
 			SetColor(2);
 			ScreenPrint(x, y, p);
@@ -88,14 +93,16 @@ public:
 			}
 			else
 			{
-				state = 0;
+				//state = 0;
 				tick = 0;
+				states->change_link("Power Up", "Normal", 0);
 			}
 		}
 	}
 
 	void update(float delta) noexcept
-	{
+	{	
+		states->simulate();
 		draw_pacman(delta);
 	}
 };
