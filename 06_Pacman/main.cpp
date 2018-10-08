@@ -1,5 +1,5 @@
 #include <conio.h>
-#include "../../trigger/trigger/component_world.h"
+#include "../trigger/trigger/component_world.h"
 #include "pacman.h"
 #include "world.h"
 

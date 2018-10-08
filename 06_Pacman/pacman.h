@@ -1,5 +1,5 @@
 #pragma once
-#include "../../trigger/trigger/fsm.h"
+#include "../trigger/trigger/fsm.h"
 #include "util.h"
 #include "wall.h"
 #include <thread>
