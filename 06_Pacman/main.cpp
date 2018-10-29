@@ -5,14 +5,14 @@
 
 auto main()-> int
 {
-	component_world *map = new component_world(true);
+	component_world *map = new component_world( true );
 	world *pac_world = new world();
 
 	ScreenInit();
-	map->add(pac_world);
-	while (true)
+	map->add( pac_world );
+	while( true )
 	{
-		
+
 	}
 
 	ScreenRelease();

@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "06_Pacman", "06_Pacman\06_P
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dijkstra", "Dijkstra\Dijkstra.vcxproj", "{CA374110-8F04-4E2B-B450-AF8D74E75941}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Astar", "Astar\Astar.vcxproj", "{DF2CBE18-2588-4675-9291-C9AD4D3D4613}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -101,6 +103,14 @@ Global
 		{CA374110-8F04-4E2B-B450-AF8D74E75941}.Release|x64.Build.0 = Release|x64
 		{CA374110-8F04-4E2B-B450-AF8D74E75941}.Release|x86.ActiveCfg = Release|Win32
 		{CA374110-8F04-4E2B-B450-AF8D74E75941}.Release|x86.Build.0 = Release|Win32
+		{DF2CBE18-2588-4675-9291-C9AD4D3D4613}.Debug|x64.ActiveCfg = Debug|x64
+		{DF2CBE18-2588-4675-9291-C9AD4D3D4613}.Debug|x64.Build.0 = Debug|x64
+		{DF2CBE18-2588-4675-9291-C9AD4D3D4613}.Debug|x86.ActiveCfg = Debug|Win32
+		{DF2CBE18-2588-4675-9291-C9AD4D3D4613}.Debug|x86.Build.0 = Debug|Win32
+		{DF2CBE18-2588-4675-9291-C9AD4D3D4613}.Release|x64.ActiveCfg = Release|x64
+		{DF2CBE18-2588-4675-9291-C9AD4D3D4613}.Release|x64.Build.0 = Release|x64
+		{DF2CBE18-2588-4675-9291-C9AD4D3D4613}.Release|x86.ActiveCfg = Release|Win32
+		{DF2CBE18-2588-4675-9291-C9AD4D3D4613}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

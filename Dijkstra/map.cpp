@@ -8,8 +8,10 @@ void map::initMap()
 	{
 		for( int x = 0; x < _width; ++x )
 		{
-			_map[y][x] = 1000;
-			_visit[y][x] = false;
+			_map[y][x].x = x;
+			_map[y][x].y = y;
+			_map[y][x].visit = false;
+			_map[y][x].f = 999;
 		}
 	}
 }
@@ -21,7 +23,7 @@ const void map::draw() const
 	{
 		for( int x = 0; x < _width; ++x )
 		{
-			cout << _map[y][x] << "\t";
+			cout << _map[y][x].visit << "\t";
 		}
 		cout << endl;
 	}
@@ -30,5 +32,4 @@ const void map::draw() const
 map::~map()
 {
 	delete[] _map;
-	delete[] _visit;
 }
