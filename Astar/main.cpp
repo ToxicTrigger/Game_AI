@@ -1,8 +1,5 @@
 #include <iostream>
-#include <string>
-#include <algorithm>
 #include <vector>
-#include <list>
 #include <stack>
 #include <math.h>
 #include <Windows.h>
@@ -110,7 +107,6 @@ bool check_load(node **map, int x, int y, int dx, int dy, stack<node>& path_)
 						map[c_n.y + ty][c_n.x + tx].h = h;
 						map[c_n.y + ty][c_n.x + tx].f = map[c_n.y + ty][c_n.x + tx].h + map[c_n.y + ty][c_n.x + tx].g;
 						//최소를 찾기 위한 수집
-
 						min.push_back(map[c_n.y + ty][c_n.x + tx]);
 					}
 				}
@@ -165,7 +161,7 @@ int main()
 	map[5][0].wall = true;
 	map[5][1].wall = true;
 
-	if(check_load(map, 2, 2, 3, 9, path))
+	if(check_load(map, 2, 2, 0, 6, path))
 	{
 		draw(map);
 
@@ -183,8 +179,6 @@ int main()
 	{
 		cout << "길을 못찾음!" << endl;
 	}
-
-
 
 	getchar();
 }
